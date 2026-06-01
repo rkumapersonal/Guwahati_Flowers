@@ -157,7 +157,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
   }
 });
 
-// Delete product
+// Delete product hrr
 app.delete('/api/products/:id', async (req, res) => {
   try {
     const { username, password } = req.body;
