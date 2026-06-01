@@ -121,8 +121,7 @@ Replace `919876543210` with your actual phone number including country code.
 ### Change Admin Credentials
 Edit [server.js](server.js):
 ```javascript
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = '';
+
 ```
 
 ### Add More Categories
