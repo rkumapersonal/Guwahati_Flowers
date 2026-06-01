@@ -1,9 +1,21 @@
 let currentCategory = '';
+let whatsappPhone = '9101780136'; // Fallback
 
 // Load products on page load
 document.addEventListener('DOMContentLoaded', () => {
+  fetchConfig();
   loadProducts();
 });
+
+async function fetchConfig() {
+  try {
+    const response = await fetch('/api/config');
+    const config = await response.json();
+    whatsappPhone = config.whatsappPhone;
+  } catch (error) {
+    console.error('Error loading config:', error);
+  }
+}
 
 async function loadProducts() {
   try {
@@ -35,7 +47,7 @@ function displayProducts(products) {
         <p class="product-description">${product.description}</p>
         ${product.price && product.price !== '0' ? `<div class="product-price">₹${product.price}</div>` : ''}
         <div class="product-footer">
-          <a href="https://wa.me/9101780136?text=Hi! I'm interested in the ${encodeURIComponent(product.title)} bouquet from Guwahati Flowers%0A%0AImage: ${encodeURIComponent(product.image)}" target="_blank" class="whatsapp-btn">
+          <a href="https://wa.me/${whatsappPhone}?text=Hi! I'm interested in the ${encodeURIComponent(product.title)} bouquet from Guwahati Flowers%0A%0AImage: ${encodeURIComponent(product.image)}" target="_blank" class="whatsapp-btn">
             💬 Chat on WhatsApp
           </a>
         </div>
