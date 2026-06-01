@@ -50,11 +50,9 @@ npm start
 http://localhost:3000
 ```
 
+
 ### First Time Setup
 
-**Default Admin Credentials:**
-- Username: `admin`
-- Password: `guwahati123`
 
 ⚠️ **IMPORTANT:** Change these credentials in production! Edit the `ADMIN_USERNAME` and `ADMIN_PASSWORD` in [server.js](server.js)
 
