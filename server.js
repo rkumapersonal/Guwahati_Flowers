@@ -11,7 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // MongoDB Connection String
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://rajdpnits_db_user:VkDGYZeOFDOF60ap@mongocluster.viqas1k.mongodb.net/guwahati-flowers?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGO_URI;
 
 // Middleware
 app.use(cors());
@@ -21,9 +21,9 @@ app.use('/uploads', express.static('uploads'));
 
 // Configure Cloudinary
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'dpbmqybjo',
-  api_key: process.env.CLOUDINARY_API_KEY || '485281275948823',
-  api_secret: process.env.CLOUDINARY_API_SECRET || 'vu4UpD63LpVsMr8uSttibqtPtDk'
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 // Connect to MongoDB
@@ -70,9 +70,9 @@ const upload = multer({
   }
 });
 
-// Admin credentials (change these in production)
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'guwahati123';
+// Admin credentials from environment variables
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 // Admin login endpoint
 app.post('/api/login', (req, res) => {
