@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Guwahati Flowers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #e91e63;
+      --secondary-color: #ff69b4;
+      --text-color: #333;
+      --light-bg: #f9f9f9;
+      --border-color: #eee;
+      --success-color: #4CAF50;
+      --error-color: #f44336;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-color);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Login Section */
+    .login-container {
+      display: none;
+      background: white;
+      padding: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: 5rem auto;
+    }
+
+    .login-container.show {
+      display: block;
+    }
+
+    .login-container h1 {
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 5px rgba(233, 30, 99, 0.2);
+    }
+
+    .login-btn {
+      width: 100%;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background: #c2185b;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      margin-top: 1rem;
+      text-align: center;
+      display: none;
+    }
+
+    /* Admin Dashboard */
+    .admin-dashboard {
+      display: none;
+    }
+
+    .admin-dashboard.show {
+      display: block;
+    }
+
+    .admin-header {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .admin-header h1 {
+      color: var(--primary-color);
+    }
+
+    .logout-btn {
+      background: var(--error-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      background: #d32f2f;
+    }
+
+    /* Upload Section */
+    .upload-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .upload-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .upload-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group-full {
+      grid-column: 1 / -1;
+    }
+
+    .file-input-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .file-input-wrapper input[type=file] {
+      position: absolute;
+      left: -9999px;
+    }
+
+    .file-input-label {
+      display: block;
+      padding: 10px;
+      background: var(--light-bg);
+      border: 2px dashed var(--border-color);
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .file-input-label:hover {
+      border-color: var(--primary-color);
+      background: rgba(233, 30, 99, 0.05);
+    }
+
+    .file-name {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn {
+      background: var(--success-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      grid-column: 1 / -1;
+    }
+
+    .submit-btn:hover {
+      background: #45a049;
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Products Table */
+    .products-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .products-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: var(--light-bg);
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    tr:hover {
+      background: var(--light-bg);
+    }
+
+    .product-thumb {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .delete-btn {
+      background: var(--error-color);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .delete-btn:hover {
+      background: #d32f2f;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: #999;
+    }
+
+    @media (max-width: 768px) {
+      .upload-form {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      table {
+        font-size: 0.9rem;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Section -->
+    <div class="login-container show" id="loginContainer">
+      <h1>🌸 Admin Login</h1>
+      <div class="message error" id="loginError"></div>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard">
+      <div class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+
+      <!-- Upload Section -->
+      <div class="upload-section">
+        <h2>Upload New Bouquet</h2>
+        <div class="message success" id="successMessage"></div>
+        <div class="message error" id="errorMessage"></div>
+        
+        <form class="upload-form" onsubmit="handleUpload(event)" id="uploadForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="Bouquet name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" required>
+              <option value="Roses">Roses</option>
+              <option value="Tulips">Tulips</option>
+              <option value="Sunflowers">Sunflowers</option>
+              <option value="Mixed">Mixed</option>
+              <option value="Seasonal">Seasonal</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price (₹)</label>
+            <input type="number" id="price" placeholder="0" step="10">
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="Brief description of the bouquet">
+          </div>
+
+          <div class="form-group form-group-full">
+            <div class="file-input-wrapper">
+              <input type="file" id="image" accept="image/*" required onchange="updateFileName()">
+              <label for="image" class="file-input-label">
+                📸 Click to select image
+                <div class="file-name" id="fileName"></div>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Upload Bouquet</button>
+        </form>
+      </div>
+
+      <!-- Products List -->
+      <div class="products-section">
+        <h2>Current Bouquets</h2>
+        <div id="productsTableContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

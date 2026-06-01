@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1001,
+    "title": "Red Roses Bouquet",
+    "category": "Roses",
+    "price": "499",
+    "description": "Beautiful red roses perfect for special occasions",
+    "image": "https://images.unsplash.com/photo-1563241527-3004b7e0a0cd?w=400&h=300&fit=crop",
+    "createdAt": "2024-05-31T10:00:00Z"
+  },
+  {
+    "id": 1002,
+    "title": "Pink Tulips Mix",
+    "category": "Tulips",
+    "price": "399",
+    "description": "Elegant pink and white tulips arrangement",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+    "createdAt": "2024-05-31T10:15:00Z"
+  },
+  {
+    "id": 1003,
+    "title": "Sunflower Delight",
+    "category": "Sunflowers",
+    "price": "349",
+    "description": "Bright sunflowers to brighten anyone's day",
+    "image": "https://images.unsplash.com/photo-1597848212624-a46b11d96cd7?w=400&h=300&fit=crop",
+    "createdAt": "2024-05-31T10:30:00Z"
+  },
+  {
+    "id": 1004,
+    "title": "Mixed Garden Flowers",
+    "category": "Mixed",
+    "price": "599",
+    "description": "A beautiful mix of seasonal flowers",
+    "image": "https://images.unsplash.com/photo-1578895269067-c20f00e2f0bb?w=400&h=300&fit=crop",
+    "createdAt": "2024-05-31T10:45:00Z"
+  },
+  {
+    "id": 1780235105790,
+    "title": "Chocolate & Rose",
+    "category": "Tulips",
+    "price": "9990",
+    "description": "Combination of both",
+    "image": "/uploads/1780235105783-820421125.png",
+    "createdAt": "2026-05-31T13:45:05.790Z"
+  },
+  {
+    "id": 1780235444202,
+    "title": "Rose pink",
+    "category": "Roses",
+    "price": "9990",
+    "description": "pink roses",
+    "image": "/uploads/1780235444192-721839740.jpg",
+    "createdAt": "2026-05-31T13:50:44.202Z"
+  },
+  {
+    "id": 1780235847864,
+    "title": "Litchi boque",
+    "category": "Tulips",
+    "price": "9990",
+    "description": "litch",
+    "image": "/uploads/1780235847854-102149753.jpg",
+    "createdAt": "2026-05-31T13:57:27.864Z"
+  }
+]
