@@ -85,6 +85,13 @@ app.post('/api/login', (req, res) => {
   }
 });
 
+// Get config endpoint
+app.get('/api/config', (req, res) => {
+  res.json({
+    whatsappPhone: process.env.WHATSAPP_PHONE_NUMBER || '9101780136'
+  });
+});
+
 // Get all products
 app.get('/api/products', async (req, res) => {
   try {
