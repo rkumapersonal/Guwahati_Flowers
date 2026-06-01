@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guwahati Flowers - Beautiful Bouquets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">🌸 Guwahati Flowers</div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#products" class="nav-link">Bouquets</a></li>
+        <li><a href="admin.html" class="nav-link admin-link">Admin</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Guwahati Flowers</h1>
+      <p>Beautiful bouquets for every occasion</p>
+      <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" class="cta-btn">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="container">
+      <h2>Choose Your Category</h2>
+      <div class="category-filters">
+        <button class="filter-btn active" onclick="filterByCategory('')">All</button>
+        <button class="filter-btn" onclick="filterByCategory('Roses')">Roses</button>
+        <button class="filter-btn" onclick="filterByCategory('Tulips')">Tulips</button>
+        <button class="filter-btn" onclick="filterByCategory('Sunflowers')">Sunflowers</button>
+        <button class="filter-btn" onclick="filterByCategory('Mixed')">Mixed</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="container">
+      <h2>Our Beautiful Bouquets</h2>
+      <div class="products-grid" id="productsGrid">
+        <div class="loading">Loading bouquets...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 Guwahati Flowers. All rights reserved.</p>
+      <p>Contact us via WhatsApp for custom orders!</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
