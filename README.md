@@ -50,11 +50,9 @@ npm start
 http://localhost:3000
 ```
 
+
 ### First Time Setup
 
-**Default Admin Credentials:**
-- Username: `admin`
-- Password: `guwahati123`
 
 ⚠️ **IMPORTANT:** Change these credentials in production! Edit the `ADMIN_USERNAME` and `ADMIN_PASSWORD` in [server.js](server.js)
 
@@ -121,8 +119,7 @@ Replace `919876543210` with your actual phone number including country code.
 ### Change Admin Credentials
 Edit [server.js](server.js):
 ```javascript
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = '';
+
 ```
 
 ### Add More Categories
